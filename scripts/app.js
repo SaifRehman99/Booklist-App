@@ -67,7 +67,7 @@ uiMaterial.prototype.deleteData =(target)=>{
 
     // traversing the DOM here
     if(target.className === 'fas fa-trash'){
-        target.parentElement.parentElement.remove()
+        target.parentElement.parentElement.parentElement.remove()
     }
 
 }
