@@ -29,11 +29,11 @@ class uiMaterial {
         // adding the element to the html
         tr.innerHTML =
             `<td>${num}</td>
-        <td>${book.name}</td>
-    <td>${book.author}</td>
-    <td>${book.pages}</td>
-    <td>${book.id}</td>
-    <td><a href=#><i class="fas fa-trash"></i></a></td>`
+            <td>${book.name}</td>
+            <td>${book.author}</td>
+            <td>${book.pages}</td>
+            <td>${book.id}</td>
+            <td><a href=#><i class="fas fa-trash"></i></a></td>`
 
         // appending the list
         thead.appendChild(tr)
@@ -103,9 +103,9 @@ class localStorageData {
         return items !== null ? JSON.parse(items) : [];
 
 
-
     }
 
+    
     // displaying the data
     static displayData() {
 
@@ -217,7 +217,6 @@ tableData.addEventListener('click', (e) => {
     // deleting the data from the localStorage
     // here passing the id num
     localStorageData.removeData(e.target.parentElement.parentElement.previousElementSibling.textContent)
-
 
 
     // showing the alert here
