@@ -81,6 +81,9 @@ uiMaterial.prototype.showAlert = (msg,clas) =>{
 
 
     // clearing the alert here
+    setTimeout(()=>{
+        document.querySelector('.alert').remove();
+    },3000)
 
 
 } 
