@@ -2,11 +2,6 @@
 // getting the reference here
 const form = document.querySelector('#bookApp');
 
-// getting the form values
-const name = document.querySelector('#bookName').value;
-const author = document.querySelector('#bookAuthor').value;
-const id = document.querySelector('#bookId').value;
-const pages = document.querySelector('#bookPages').value;
 // Book Constructor here
 function Book(name, author, id, pages) {
     this.name = name;
@@ -16,10 +11,10 @@ function Book(name, author, id, pages) {
 }
 
 // Creating the UI Constructor here
-function uiMaterial(){}
+function uiMaterial() { }
 
 // prototyping the methods here
-uiMaterial.prototype.addBook = (book)=>{
+uiMaterial.prototype.addBook = (book) => {
 
     // getting the reference of the thead to insert the elements dynamically
     const thead = document.querySelector('#bookBody');
@@ -29,25 +24,31 @@ uiMaterial.prototype.addBook = (book)=>{
 
     // adding the element to the html
     tr.innerHTML =
-    `<td>${book.name}</td>
+        `<td>${book.name}</td>
     <td>${book.author}</td>
     <td>${book.id}</td>
     <td>${book.pages}</td>
     <td><a href=# class="del"><i class="fas fa-trash"></i></a></td>`
-    
+
     // appending the list
     thead.appendChild(tr)
 
 }
 // adding the event listener
-form.addEventListener('submit',(e)=> {
+form.addEventListener('submit', (e) => {
+
+    // getting the form values
+    const name = document.querySelector('#bookName').value;
+    const author = document.querySelector('#bookAuthor').value;
+    const id = document.querySelector('#bookId').value;
+    const pages = document.querySelector('#bookPages').value;
 
     // preventing the default behaviour
     e.preventDefault();
 
     // passing the values to the constructor function
     // Instantiating the Book
-    const book = new Book(name,author,id,pages);
+    const book = new Book(name, author, id, pages);
 
     // Instantiating the Ui material
     const ui = new uiMaterial();
