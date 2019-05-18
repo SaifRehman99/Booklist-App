@@ -17,6 +17,44 @@ function Book(name, author, id, pages) {
 function uiMaterial() { }
 
 
+// Creating localstorage constructor
+
+function localStorageData (){}
+
+
+// Creating the localStorage methods here
+
+
+
+// getting the data from the local storage
+localStorageData.prototype.getData = ()=>{
+
+
+}
+
+
+// display the data from the local storage
+localStorageData.prototype.displayData = ()=>{
+
+
+}
+
+
+// add the data from the local storage
+localStorageData.prototype.addData = ()=>{
+
+
+}
+
+
+// remove the data from the local storage
+localStorageData.prototype.removeData = ()=>{
+
+
+}
+
+
+
 //=====================================Prototyping The Methods Here======================================//
 
 var id = 0;
