@@ -17,9 +17,6 @@ function Book(name, author, id, pages) {
 function uiMaterial() { }
 
 
-
-
-
 //=====================================Prototyping The Methods Here======================================//
 
 var id = 0;
@@ -33,6 +30,7 @@ uiMaterial.prototype.addBook = (book) => {
 
     // creating table elements
     const tr = document.createElement('tr');
+    // t.className = 'text-dark'
 
     // adding the element to the html
     tr.innerHTML =
