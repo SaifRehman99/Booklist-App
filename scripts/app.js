@@ -21,9 +21,12 @@ function uiMaterial() { }
 
 //=====================================Prototyping The Methods Here======================================//
 
+var id=0;
+
 // adding the book
 uiMaterial.prototype.addBook = (book) => {
 
+    id++;
     // getting the reference of the thead to insert the elements dynamically
     const thead = document.querySelector('#bookBody');
 
@@ -32,7 +35,8 @@ uiMaterial.prototype.addBook = (book) => {
 
     // adding the element to the html
     tr.innerHTML =
-        `<td>${book.name}</td>
+        `<td>${id}</td>
+        <td>${book.name}</td>
     <td>${book.author}</td>
     <td>${book.id}</td>
     <td>${book.pages}</td>
