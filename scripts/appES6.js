@@ -139,16 +139,16 @@ class localStorageData {
 
         const books = localStorageData.getData();
 
-        books.forEach((item,index)=>{
-            if(item.id === id){
-                books.splice(index,1);
+        books.forEach((item, index) => {
+            if (item.id === id) {
+                books.splice(index, 1);
             }
 
         })
 
-        localStorage.setItem('books',JSON.stringify(books));
-        
-    }   
+        localStorage.setItem('books', JSON.stringify(books));
+
+    }
 
 
 }

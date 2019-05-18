@@ -19,7 +19,7 @@ function uiMaterial() { }
 
 // Creating localstorage constructor
 
-function localStorageData (){}
+function localStorageData() { }
 
 
 // Creating the localStorage methods here
@@ -27,29 +27,68 @@ function localStorageData (){}
 
 
 // getting the data from the local storage
-localStorageData.prototype.getData = ()=>{
+localStorageData.prototype.getData = () => {
+
+
+    // getting the saved data from loca;Storage
+    let items = localStorage.getItem('books')
+
+
+    return items !== null ? JSON.parse(items) : [];
 
 
 }
 
 
 // display the data from the local storage
-localStorageData.prototype.displayData = ()=>{
+localStorageData.prototype.displayData = () => {
+
+
+    const LS = new localStorageData()
+
+    const data = LS.getData();
+
+    data.forEach((item) => {
+        const ui = new uiMaterial();
+
+        // adding data to the UI from local storage
+        ui.addBook(item);
+
+    })
 
 
 }
 
 
 // add the data from the local storage
-localStorageData.prototype.addData = ()=>{
+localStorageData.prototype.addData = (book) => {
 
+
+    const LS = new localStorageData()
+
+    const data = LS.getData();
+    data.push(book);
+
+    localStorage.setItem('books', JSON.stringify(data))
 
 }
 
 
 // remove the data from the local storage
-localStorageData.prototype.removeData = ()=>{
+localStorageData.prototype.removeData = (id) => {
 
+    const LS = new localStorageData()
+
+    const data = LS.getData();
+
+    data.forEach((item,index)=>{
+        if(item.id === id){
+            data.splice(index,1);
+        }
+    })
+    localStorage.setItem('books',JSON.stringify(data));
+
+    console.log(id)
 
 }
 
@@ -75,8 +114,8 @@ uiMaterial.prototype.addBook = (book) => {
         `<td>${id}</td>
         <td>${book.name}</td>
     <td>${book.author}</td>
-    <td>${book.id}</td>
     <td>${book.pages}</td>
+    <td>${book.id}</td>
     <td><a href=#><i class="fas fa-trash"></i></a></td>`
 
     // appending the list
@@ -166,6 +205,12 @@ form.addEventListener('submit', (e) => {
         // adding book to the table
         ui.addBook(book);
 
+        // adding data in localStorage
+
+        const LS = new localStorageData()
+        LS.addData(book)
+
+
         // clearing input fields
         ui.clearInput();
 
@@ -188,6 +233,10 @@ tableData.addEventListener('click', (e) => {
 
     ui.deleteData(e.target);
 
+    const LS = new localStorageData();
+
+    LS.removeData(e.target.parentElement.parentElement.previousElementSibling.textContent)
+
     // showing the alert here
     ui.showAlert('Book Deleted Successfully!', 'alert alert-success');
 
@@ -195,3 +244,8 @@ tableData.addEventListener('click', (e) => {
     e.preventDefault();
 
 })
+
+
+// DOM Load Event
+const LS = new localStorageData()
+document.addEventListener('DOMContentLoaded', LS.displayData)
