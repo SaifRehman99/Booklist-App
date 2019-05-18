@@ -92,7 +92,28 @@ class uiMaterial {
 // Local Storage Class here
 
 class localStorage{
-    
+
+    // getting the saved data
+    getData(){
+
+    }
+
+    // displaying the data
+    displayData(){
+
+    }
+
+    // adding the data to local storage
+    addData(){
+
+    }
+
+    // removing data from local storage as well
+    removeData(){
+        
+    }
+
+
 }
 // adding the event listener
 form.addEventListener('submit', (e) => {
