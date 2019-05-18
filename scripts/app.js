@@ -58,7 +58,6 @@ uiMaterial.prototype.clearInput = ()=>{
 
 
 
-
 // adding the event listener
 form.addEventListener('submit', (e) => {
 
