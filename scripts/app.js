@@ -2,6 +2,8 @@
 // getting the reference here
 const form = document.querySelector('#bookApp');
 
+
+
 // Book Constructor here
 function Book(name, author, id, pages) {
     this.name = name;
@@ -13,7 +15,13 @@ function Book(name, author, id, pages) {
 // Creating the UI Constructor here
 function uiMaterial() { }
 
-// prototyping the methods here
+
+
+
+
+//=====================================Prototyping The Methods Here======================================//
+
+// adding the book
 uiMaterial.prototype.addBook = (book) => {
 
     // getting the reference of the thead to insert the elements dynamically
@@ -34,6 +42,23 @@ uiMaterial.prototype.addBook = (book) => {
     thead.appendChild(tr)
 
 }
+
+
+
+// clearing the input method
+uiMaterial.prototype.clearInput = ()=>{
+
+      // clearing the form values
+      document.querySelector('#bookName').value='';
+      document.querySelector('#bookAuthor').value='';
+      document.querySelector('#bookId').value='';
+      document.querySelector('#bookPages').value=''
+
+}
+
+
+
+
 // adding the event listener
 form.addEventListener('submit', (e) => {
 
@@ -56,6 +81,6 @@ form.addEventListener('submit', (e) => {
     // adding book to the table
     ui.addBook(book);
 
-    // clearing input fileds
+    // clearing input fields
     ui.clearInput();
 })
