@@ -77,8 +77,6 @@ class uiMaterial {
 
     }
 
-
-
     clearInput() {
 
         // clearing the form values
@@ -88,3 +86,64 @@ class uiMaterial {
         document.querySelector('#bookPages').value = ''
     }
 }
+
+
+// adding the event listener
+form.addEventListener('submit', (e) => {
+
+    // getting the form values
+    const name = document.querySelector('#bookName').value;
+    const author = document.querySelector('#bookAuthor').value;
+    const id = document.querySelector('#bookId').value;
+    const pages = document.querySelector('#bookPages').value;
+
+    // preventing the default behaviour
+    e.preventDefault();
+
+    // passing the values to the constructor function
+    // Instantiating the Book
+    const book = new Book(name, author, id, pages);
+
+    // Instantiating the Ui material
+    const ui = new uiMaterial();
+
+    // validating the inputs
+    if (name === '' || author === '' || id === '' || pages === '') {
+
+        // showing the alert
+        ui.showAlert('Please add all fields..!', 'alert alert-danger');
+
+    }
+    else {
+        // adding book to the table
+        ui.addBook(book);
+
+        // clearing input fields
+        ui.clearInput();
+
+        // showing the successful alert
+        ui.showAlert('Book has been added!', 'alert alert-success');
+
+
+    }
+
+
+})
+
+
+// removing the element here
+// using event delegation here
+tableData.addEventListener('click', (e) => {
+
+    // passing the delete class here
+    ui = new uiMaterial();
+
+    ui.deleteData(e.target);
+
+    // showing the alert here
+    ui.showAlert('Book Deleted Successfully!', 'alert alert-success');
+
+    // prevent the default behaviour
+    e.preventDefault();
+
+})
