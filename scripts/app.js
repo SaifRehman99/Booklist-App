@@ -1,3 +1,12 @@
+
+// getting the reference here
+const form = document.querySelector('#bookApp');
+
+// getting the form values
+const name = document.querySelector('#bookName').value;
+const author = document.querySelector('#bookAuthor').value;
+const id = document.querySelector('#bookId').value;
+const pages = document.querySelector('#bookPages').value;
 // Book Constructor here
 function Book(name, author, id, pages) {
     this.name = name;
@@ -24,24 +33,17 @@ uiMaterial.prototype.addBook = (book)=>{
     <td>${book.author}</td>
     <td>${book.id}</td>
     <td>${book.pages}</td>
-    <td><a href=#><i class="fas fa-trash"></i></a></td>`
+    <td><a href=# class="del"><i class="fas fa-trash"></i></a></td>`
+    
+    // appending the list
+    thead.appendChild(tr)
 
 }
-
-// getting the reference here
-const form = document.querySelector('#bookApp');
-
 // adding the event listener
 form.addEventListener('submit',(e)=> {
 
     // preventing the default behaviour
     e.preventDefault();
-
-    // getting the form values
-    const name = document.querySelector('#bookName').value;
-    const author = document.querySelector('#bookAuthor').value;
-    const id = document.querySelector('#bookId').value;
-    const pages = document.querySelector('#bookPages').value;
 
     // passing the values to the constructor function
     // Instantiating the Book
@@ -52,4 +54,7 @@ form.addEventListener('submit',(e)=> {
 
     // adding book to the table
     ui.addBook(book);
+
+    // clearing input fileds
+    ui.clearInput();
 })
