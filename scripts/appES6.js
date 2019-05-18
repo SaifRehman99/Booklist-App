@@ -13,12 +13,12 @@ class Book {
         this.pages = pages;
     }
 }
-var id = 0
+var num = 0
 // Creating the UI Constructor here
 class uiMaterial {
 
     addBook(book) {
-        id++;
+        num++;
         // getting the reference of the thead to insert the elements dynamically
         const thead = document.querySelector('#bookBody');
 
@@ -28,11 +28,11 @@ class uiMaterial {
 
         // adding the element to the html
         tr.innerHTML =
-            `<td>${id}</td>
+            `<td>${num}</td>
         <td>${book.name}</td>
     <td>${book.author}</td>
-    <td>${book.id}</td>
     <td>${book.pages}</td>
+    <td>${book.id}</td>
     <td><a href=#><i class="fas fa-trash"></i></a></td>`
 
         // appending the list
@@ -90,31 +90,74 @@ class uiMaterial {
 
 
 // Local Storage Class here
-
-class localStorage{
+class localStorageData {
 
     // getting the saved data
-    getData(){
+    static getData() {
+
+
+        // getting the saved data from loca;Storage
+        let items = localStorage.getItem('books')
+
+
+        return items !== null ? JSON.parse(items) : [];
+
+
 
     }
 
     // displaying the data
-    displayData(){
+    static displayData() {
+
+        const books = localStorageData.getData();
+
+        books.forEach((item) => {
+            const ui = new uiMaterial();
+
+            // adding data to the UI from local storage
+            ui.addBook(item)
+        })
 
     }
 
     // adding the data to local storage
-    addData(){
+    static addData(book) {
+
+        // getting the return data here
+        const books = localStorageData.getData();
+
+        // pushing the entered data
+        books.push(book);
+
+        // saving in the local Storage
+        localStorage.setItem('books', JSON.stringify(books));
 
     }
 
     // removing data from local storage as well
-    removeData(){
+    static removeData(id) {
+
+        const books = localStorageData.getData();
+
+        books.forEach((item,index)=>{
+            if(item.id === id){
+                books.splice(index,1);
+            }
+
+        })
+
+        localStorage.setItem('books',JSON.stringify(books));
         
-    }
+    }   
 
 
 }
+
+
+
+
+
+
 // adding the event listener
 form.addEventListener('submit', (e) => {
 
@@ -145,6 +188,9 @@ form.addEventListener('submit', (e) => {
         // adding book to the table
         ui.addBook(book);
 
+        // passing the entered data
+        localStorageData.addData(book)
+
         // clearing input fields
         ui.clearInput();
 
@@ -165,7 +211,14 @@ tableData.addEventListener('click', (e) => {
     // passing the delete class here
     ui = new uiMaterial();
 
+    // deleting the data
     ui.deleteData(e.target);
+
+    // deleting the data from the localStorage
+    // here passing the id num
+    localStorageData.removeData(e.target.parentElement.parentElement.previousElementSibling.textContent)
+
+
 
     // showing the alert here
     ui.showAlert('Book Deleted Successfully!', 'alert alert-success');
@@ -174,3 +227,6 @@ tableData.addEventListener('click', (e) => {
     e.preventDefault();
 
 })
+
+// DOM Load Event
+document.addEventListener('DOMContentLoaded', localStorageData.displayData)
