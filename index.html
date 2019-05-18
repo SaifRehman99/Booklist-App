@@ -25,39 +25,61 @@
         <div class="row mt-5 p-5">
             <div class="col-md-8 col-sm-12 mx-auto">
                 <form id="bookApp">
-                        <label class="font-weight-bold">Book Name</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Name" id="bookName">
+                    <label class="font-weight-bold">Book Name</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">@</span>
                         </div>
-        
-                        <label class="font-weight-bold">Book Author</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Author" id="bookAuthor">
+                        <input type="text" class="form-control" placeholder="Name" id="bookName">
+                    </div>
+
+                    <label class="font-weight-bold">Book Author</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">@</span>
                         </div>
-        
-                        <label class="font-weight-bold">Book Id</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Enter Id" id="bookId">
+                        <input type="text" class="form-control" placeholder="Author" id="bookAuthor">
+                    </div>
+
+                    <label class="font-weight-bold">Book Id</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">@</span>
                         </div>
-        
-                        <label class="font-weight-bold">Book Pages</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">@</span>
-                            </div>
-                            <input type="number" class="form-control" placeholder="Enter Pages" id="bookPages">
+                        <input type="text" class="form-control" placeholder="Enter Id" id="bookId">
+                    </div>
+
+                    <label class="font-weight-bold">Book Pages</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">@</span>
                         </div>
-                        <input type="submit" value="Submit" class="btn btn-info btn-block" id="bookSubmit">
+                        <input type="number" class="form-control" placeholder="Enter Pages" id="bookPages">
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-info btn-block" id="bookSubmit">
                 </form>
+
+                <!-- table here -->
+                <div class="bookTable mt-5 pt-5">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Id</th>
+                                <th scope="col">Pages</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+
+                        <!-- adding here dynamically -->
+                        <tbody id="bookBody">
+
+
+                        </tbody>
+                    </table>
+
+                </div>
 
             </div>
         </div>
