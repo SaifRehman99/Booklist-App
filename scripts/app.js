@@ -9,6 +9,25 @@ function Book(name, author, id, pages) {
 // Creating the UI Constructor here
 function uiMaterial(){}
 
+// prototyping the methods here
+uiMaterial.prototype.addBook = (book)=>{
+
+    // getting the reference of the thead to insert the elements dynamically
+    const thead = document.querySelector('#bookBody');
+
+    // creating table elements
+    const tr = document.createElement('tr');
+
+    // adding the element to the html
+    tr.innerHTML =
+    `<td>${book.name}</td>
+    <td>${book.author}</td>
+    <td>${book.id}</td>
+    <td>${book.pages}</td>
+    <td><a href=#><i class="fas fa-trash"></i></a></td>`
+
+}
+
 // getting the reference here
 const form = document.querySelector('#bookApp');
 
@@ -25,5 +44,12 @@ form.addEventListener('submit',(e)=> {
     const pages = document.querySelector('#bookPages').value;
 
     // passing the values to the constructor function
+    // Instantiating the Book
     const book = new Book(name,author,id,pages);
+
+    // Instantiating the Ui material
+    const ui = new uiMaterial();
+
+    // adding book to the table
+    ui.addBook(book);
 })
