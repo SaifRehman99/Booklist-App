@@ -46,16 +46,44 @@ uiMaterial.prototype.addBook = (book) => {
 
 
 // clearing the input method
-uiMaterial.prototype.clearInput = ()=>{
+uiMaterial.prototype.clearInput = () => {
 
-      // clearing the form values
-      document.querySelector('#bookName').value='';
-      document.querySelector('#bookAuthor').value='';
-      document.querySelector('#bookId').value='';
-      document.querySelector('#bookPages').value=''
+    // clearing the form values
+    document.querySelector('#bookName').value = '';
+    document.querySelector('#bookAuthor').value = '';
+    document.querySelector('#bookId').value = '';
+    document.querySelector('#bookPages').value = ''
 
 }
 
+
+// showing the alert here
+uiMaterial.prototype.showAlert = (msg,clas) =>{
+
+    // getting the parent element here
+    const parent = document.querySelector('.container');
+
+    // getting the form to insert before
+    const form = document.querySelector('#bookApp');
+
+
+    // creating div here
+    const div = document.createElement('div');
+
+    // adding class
+    div.className = clas;
+
+    // adding text 
+    div.textContent = msg;
+
+    // adding to the DOM
+    parent.insertBefore(div,form)
+
+
+    // clearing the alert here
+
+
+} 
 
 
 // adding the event listener
@@ -77,9 +105,25 @@ form.addEventListener('submit', (e) => {
     // Instantiating the Ui material
     const ui = new uiMaterial();
 
-    // adding book to the table
-    ui.addBook(book);
+    // validating the inputs
+    if (name ==='' || author === '' || id === '' || pages === '') {
+        
+        // showing the alert
+        ui.showAlert('Please add all fields..!','alert alert-danger');
 
-    // clearing input fields
-    ui.clearInput();
+    }
+    else {
+        // adding book to the table
+        ui.addBook(book);
+
+        // clearing input fields
+        ui.clearInput();
+
+        // showing the successful alert
+        ui.showAlert('Book has been added!','alert alert-success');
+
+
+    }
+
+
 })
