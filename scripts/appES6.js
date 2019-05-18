@@ -88,6 +88,12 @@ class uiMaterial {
 }
 
 
+
+// Local Storage Class here
+
+class localStorage{
+    
+}
 // adding the event listener
 form.addEventListener('submit', (e) => {
 
