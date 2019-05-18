@@ -58,35 +58,31 @@ uiMaterial.prototype.clearInput = () => {
 
 
 // showing the alert here
-uiMaterial.prototype.showAlert = (msg,clas) =>{
+uiMaterial.prototype.showAlert = (msg, cls) => {
 
-    // getting the parent element here
-    const parent = document.querySelector('.container');
-
-    // getting the form to insert before
-    const form = document.querySelector('#bookApp');
-
+    // getting the msg div
+    const message = document.querySelector('#message');
 
     // creating div here
-    const div = document.createElement('div');
+    const alertDiv = document.createElement('div');
 
     // adding class
-    div.className = clas;
+    alertDiv.className = cls;
 
     // adding text 
-    div.textContent = msg;
+    alertDiv.textContent = msg;
 
-    // adding to the DOM
-    parent.insertBefore(div,form)
+    // appending
+    message.appendChild(alertDiv);
 
 
     // clearing the alert here
-    setTimeout(()=>{
+    setTimeout(() => {
         document.querySelector('.alert').remove();
-    },3000)
+    }, 3000)
 
 
-} 
+}
 
 
 // adding the event listener
@@ -109,10 +105,10 @@ form.addEventListener('submit', (e) => {
     const ui = new uiMaterial();
 
     // validating the inputs
-    if (name ==='' || author === '' || id === '' || pages === '') {
-        
+    if (name === '' || author === '' || id === '' || pages === '') {
+
         // showing the alert
-        ui.showAlert('Please add all fields..!','alert alert-danger');
+        ui.showAlert('Please add all fields..!', 'alert alert-danger');
 
     }
     else {
@@ -123,7 +119,7 @@ form.addEventListener('submit', (e) => {
         ui.clearInput();
 
         // showing the successful alert
-        ui.showAlert('Book has been added!','alert alert-success');
+        ui.showAlert('Book has been added!', 'alert alert-success');
 
 
     }
