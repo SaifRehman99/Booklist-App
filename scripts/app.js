@@ -30,7 +30,7 @@ uiMaterial.prototype.addBook = (book) => {
 
     // creating table elements
     const tr = document.createElement('tr');
-    // t.className = 'text-dark'
+    tr.className = 'text-white'
 
     // adding the element to the html
     tr.innerHTML =
@@ -61,10 +61,10 @@ uiMaterial.prototype.clearInput = () => {
 
 
 // deleting the elements
-uiMaterial.prototype.deleteData =(target)=>{
+uiMaterial.prototype.deleteData = (target) => {
 
     // traversing the DOM here
-    if(target.className === 'fas fa-trash'){
+    if (target.className === 'fas fa-trash') {
         target.parentElement.parentElement.parentElement.remove()
     }
 
@@ -151,9 +151,9 @@ tableData.addEventListener('click', (e) => {
     ui.deleteData(e.target);
 
     // showing the alert here
-    ui.showAlert('Book Deleted Successfully!','alert alert-success');
+    ui.showAlert('Book Deleted Successfully!', 'alert alert-success');
 
     // prevent the default behaviour
     e.preventDefault();
- 
+
 })
