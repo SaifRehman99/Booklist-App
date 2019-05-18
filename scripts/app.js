@@ -65,6 +65,11 @@ uiMaterial.prototype.clearInput = () => {
 // deleting the elements
 uiMaterial.prototype.deleteData =(target)=>{
 
+    // traversing the DOM here
+    if(target.className === 'fas fa-trash'){
+        target.parentElement.parentElement.remove()
+    }
+
 }
 
 // showing the alert here
@@ -145,17 +150,12 @@ tableData.addEventListener('click', (e) => {
     // passing the delete class here
     ui = new uiMaterial();
 
-    // ui.deleteData(e.target);
+    ui.deleteData(e.target);
 
     // showing the alert here
-    // ui.showAlert('Book Deleted Successfully!','alert alert-success');
+    ui.showAlert('Book Deleted Successfully!','alert alert-success');
 
     // prevent the default behaviour
     e.preventDefault();
-    if(e.target.className === 'fas fa-trash'){
-        console.log('ye')
-    }
-    else{
-        console.log('NO')
-    }
+ 
 })
