@@ -1,6 +1,7 @@
 
 // getting the reference here
 const form = document.querySelector('#bookApp');
+const tableData = document.querySelector('#bookBody');
 
 
 
@@ -128,5 +129,24 @@ form.addEventListener('submit', (e) => {
 
     }
 
+
+})
+
+
+// removing the element here
+// using event delegation here
+tableData.addEventListener('click',(e)=>{
+
+    // passing the delete class here
+    ui = new uiMaterial();
+
+    ui.deleteData(e.target);
+
+
+    // showing the alert here
+    ui.showAlert('Book Deleted Successfully!','alert alert-success');
+
+    // prevent the default behaviour
+    e.preventDefault();
 
 })
