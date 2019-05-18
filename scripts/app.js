@@ -22,7 +22,7 @@ function uiMaterial() { }
 
 //=====================================Prototyping The Methods Here======================================//
 
-var id=0;
+var id = 0;
 
 // adding the book
 uiMaterial.prototype.addBook = (book) => {
@@ -41,7 +41,7 @@ uiMaterial.prototype.addBook = (book) => {
     <td>${book.author}</td>
     <td>${book.id}</td>
     <td>${book.pages}</td>
-    <td><a href=# class="del"><i class="fas fa-trash"></i></a></td>`
+    <td><a href=#><i class="fas fa-trash"></i></a></td>`
 
     // appending the list
     thead.appendChild(tr)
@@ -61,6 +61,11 @@ uiMaterial.prototype.clearInput = () => {
 
 }
 
+
+// deleting the elements
+uiMaterial.prototype.deleteData =(target)=>{
+
+}
 
 // showing the alert here
 uiMaterial.prototype.showAlert = (msg, cls) => {
@@ -135,18 +140,22 @@ form.addEventListener('submit', (e) => {
 
 // removing the element here
 // using event delegation here
-tableData.addEventListener('click',(e)=>{
+tableData.addEventListener('click', (e) => {
 
     // passing the delete class here
     ui = new uiMaterial();
 
-    ui.deleteData(e.target);
-
+    // ui.deleteData(e.target);
 
     // showing the alert here
-    ui.showAlert('Book Deleted Successfully!','alert alert-success');
+    // ui.showAlert('Book Deleted Successfully!','alert alert-success');
 
     // prevent the default behaviour
     e.preventDefault();
-
+    if(e.target.className === 'fas fa-trash'){
+        console.log('ye')
+    }
+    else{
+        console.log('NO')
+    }
 })
